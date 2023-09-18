@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 import pandas as pd
 import random
-import faker
+from faker import Faker
+
+fake = Faker()
 
 app = Flask(__name__)
 
@@ -14,11 +16,11 @@ def mainpage():
 def aboutpage():
     return render_template('about.html')
 
-@app.route('/randomnumber')
+@app.route('/random')
 def randomnumber():
     number_var = random.randint(1, 1000000)
     fake_address = fake.address()
-    return render_template('randomnumber.html', single_number = number_var, single_address = fake_address)
+    return render_template('random.html', single_number = number_var, single_address = fake_address)
     
 
 
